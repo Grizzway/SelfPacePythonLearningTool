@@ -1,0 +1,343 @@
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    backdrop-filter: blur(2px);
+}
+
+.modal-overlay.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.2s ease;
+}
+
+.modal {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow: hidden;
+    animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Modal Header */
+.modal-header {
+    background: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 1.3rem;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: #6c757d;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.modal-close:hover {
+    background: #e9ecef;
+    color: #495057;
+}
+
+/* Modal Body */
+.modal-body {
+    padding: 2rem;
+    overflow-y: auto;
+    max-height: 60vh;
+}
+
+/* Modal Footer */
+.modal-footer {
+    background: #f8f9fa;
+    border-top: 1px solid #e9ecef;
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+/* Delete Modal */
+.delete-modal {
+    width: 500px;
+}
+
+.question-preview {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 6px;
+    padding: 1rem;
+    margin-top: 1rem;
+    font-style: italic;
+    color: #6c757d;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+/* Add Question Modal */
+.add-question-modal {
+    width: 700px;
+}
+
+/* Form Styles */
+.form-section {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #d1d3d4;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    transition: border-color 0.2s ease;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.form-hint {
+    font-size: 0.8rem;
+    color: #6c757d;
+    margin-top: 0.5rem;
+}
+
+/* Question Type Selector */
+.question-type-selector {
+    display: flex;
+    gap: 1rem;
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    padding: 0.75rem 1rem;
+    border: 2px solid #e9ecef;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.radio-option:hover {
+    border-color: #007bff;
+    background: #f8f9fa;
+}
+
+.radio-option input[type="radio"] {
+    margin: 0;
+}
+
+.radio-option input[type="radio"]:checked + span {
+    font-weight: 500;
+    color: #007bff;
+}
+
+.radio-option:has(input[type="radio"]:checked) {
+    border-color: #007bff;
+    background: #e3f2fd;
+}
+
+/* Tag Input Container */
+.tag-input-container {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.tag-input-container select,
+.tag-input-container input {
+    flex: 1;
+}
+
+/* Options Container */
+.options-container {
+    margin-bottom: 1rem;
+}
+
+.option-input-group {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    align-items: center;
+}
+
+.option-input-group input[type="text"] {
+    flex: 1;
+}
+
+.option-input-group input[type="radio"] {
+    margin: 0;
+}
+
+.option-input-group .correct-label {
+    font-size: 0.8rem;
+    color: #28a745;
+    font-weight: 500;
+    min-width: 60px;
+}
+
+.remove-option-btn {
+    background: #ff6b6b;
+    color: white;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.remove-option-btn:hover {
+    background: #ff5252;
+    transform: scale(1.05);
+}
+
+/* Save Modal */
+.save-modal {
+    width: 600px;
+}
+
+.changes-summary {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 6px;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.changes-summary h4 {
+    margin: 0 0 0.5rem 0;
+    color: #2c3e50;
+    font-size: 1rem;
+}
+
+.changes-summary ul {
+    margin: 0;
+    padding-left: 1.5rem;
+}
+
+.changes-summary li {
+    margin-bottom: 0.25rem;
+    color: #6c757d;
+}
+
+.change-added {
+    color: #28a745;
+}
+
+.change-deleted {
+    color: #dc3545;
+}
+
+/* Responsive Modal Styles */
+@media (max-width: 768px) {
+    .modal {
+        width: 95vw;
+        max-width: none;
+        margin: 1rem;
+    }
+    
+    .add-question-modal,
+    .delete-modal,
+    .save-modal {
+        width: 100%;
+    }
+    
+    .modal-header,
+    .modal-body,
+    .modal-footer {
+        padding: 1rem;
+    }
+    
+    .modal-footer {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .modal-footer .btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .question-type-selector {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .radio-option {
+        justify-content: center;
+    }
+    
+    .tag-input-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .option-input-group {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: stretch;
+    }
+    
+    .option-input-group .correct-label {
+        text-align: center;
+        min-width: auto;
+    }
+}

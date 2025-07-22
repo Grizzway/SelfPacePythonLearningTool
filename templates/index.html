@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Fundamentals Learning Platform</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        /* Additional styles for admin button */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header-main {
+            flex: 1;
+        }
+        
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .admin-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .admin-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .header-actions {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="header-main">
+                <h1>Python Fundamentals</h1>
+                <p class="subtitle">Master the core concepts of Python programming</p>
+            </div>
+            <div class="header-actions">
+                <a href="/admin" class="admin-btn">⚙️ Admin</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="topics-grid">
+        {% for topic_id, topic_data in topics.items() %}
+        <div class="topic-card" id="{{ topic_id }}-card">
+            <div class="topic-header">
+                {{ topic_data.title.split(':')[0] }}
+                <span class="completion-badge" id="{{ topic_id }}-badge">Completed</span>
+            </div>
+            <div class="topic-content">
+                <p class="topic-description">{{ topic_data.description }}</p>
+                <div class="progress-container">
+                    <div class="progress-bar" id="{{ topic_id }}-progress"></div>
+                </div>
+                <a class="button" data-topic="{{ topic_id }}">Watch Lecture</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Video Modal -->
+    <div class="video-container" id="video-modal">
+        <div class="close-button">×</div>
+        <h2 class="video-title" id="current-video-title">Video Title</h2>
+        <div class="video-player">
+            <iframe id="video-iframe" width="800" height="450" src="" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            <div class="progress-container" style="margin-top: 10px;">
+                <div class="progress-bar" id="video-progress-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

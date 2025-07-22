@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/nav-component.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/results.css') }}">
+</head>
+<body>
+    <!-- Navigation Component -->
+    {% include 'nav-component.html' %}
+    
+    <!-- Main Content -->
+    <div class="container">
+        <h1>Quiz Results</h1>
+        
+        <div class="results-container" id="resultsContainer">
+            <!-- Initial loading state - will be replaced by JavaScript -->
+            <div class="loading-results" id="loadingState">
+                <div class="loading-spinner"></div>
+                <p>Loading your results...</p>
+            </div>
+            
+            <!-- Results content - will be populated by JavaScript -->
+            <div class="results-content" id="resultsContent" style="display: none;">
+                <div class="result-title" id="resultTitle">
+                    <!-- Title populated by JS -->
+                </div>
+                
+                <div class="score-display" id="scoreDisplay">
+                    <!-- Score populated by JS -->
+                </div>
+                
+                <div class="result-message" id="resultMessage">
+                    <!-- Message populated by JS -->
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="btn btn-primary next-topic-btn" data-action="next">
+                        🏠 Try Another Topic
+                    </button>
+                    <button class="btn btn-warning retake-btn" data-action="retake">
+                        🔄 Retake Quiz
+                    </button>
+                    <button class="btn btn-secondary remedial-btn" data-action="remedial" style="display: none;">
+                        📚 Remedial Quiz
+                    </button>
+                </div>
+                
+                <div class="ai-feedback" id="aiFeedback">
+                    <!-- AI feedback will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/nav-component.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/results.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,446 @@
+{
+    "tags": {
+      "for": "For loop syntax and usage",
+      "while": "While loop syntax and usage", 
+      "break": "Break statement to exit loops",
+      "continue": "Continue statement to skip iterations",
+      "range": "Range function for generating sequences",
+      "else": "Else clause with loops",
+      "pass": "Pass statement for empty loops"
+    },
+    "questions": [
+      {
+        "question": "What keyword is used to create a for loop in Python?",
+        "type": "multiple_choice",
+        "options": ["for", "loop", "repeat", "each"],
+        "answer": "for",
+        "tags": ["for"],
+        "difficulty": "beginner",
+        "video": "https://www.youtube.com/watch?v=0ZvaDa8eT5s"
+      },
+      {
+        "question": "What is the correct syntax for a for loop?",
+        "type": "multiple_choice",
+        "options": [
+          "for x in sequence:",
+          "for (x in sequence):",
+          "for x = sequence:",
+          "for x -> sequence:"
+        ],
+        "answer": "for x in sequence:",
+        "tags": ["for"],
+        "difficulty": "beginner",
+        "video": "https://www.youtube.com/watch?v=0ZvaDa8eT5s"
+      },
+      {
+        "question": "What will this code print?\n[code]fruits = [\"apple\", \"banana\"][\\n]for x in fruits:[\\n][indent]print(x)[/code]",
+        "type": "multiple_choice",
+        "options": ["apple banana", "apple\\nbanana", "x x", "fruits"],
+        "answer": "apple\\nbanana",
+        "tags": ["for"],
+        "difficulty": "beginner",
+        "video": "https://www.youtube.com/watch?v=0ZvaDa8eT5s"
+      },
+      {
+        "question": "Can you use a for loop to iterate through a string?",
+        "type": "multiple_choice",
+        "options": ["Yes", "No", "Only with numbers", "Only with lists"],
+        "answer": "Yes",
+        "tags": ["for"],
+        "difficulty": "beginner",
+        "video": "https://www.youtube.com/watch?v=0ZvaDa8eT5s"
+      },
+      {
+        "question": "What will this code output?\n[code]for x in \"hi\":[\\n][indent]print(x)[/code]",
+        "type": "multiple_choice",
+        "options": ["h\\ni", "hi", "x\\nx", "Error"],
+        "answer": "h\\ni",
+        "tags": ["for"],
+        "difficulty": "beginner",
+        "video": "https://www.youtube.com/watch?v=0ZvaDa8eT5s"
+      },
+      {
+        "question": "Write a for loop that prints each letter in the word 'cat':",
+        "type": "code_writing",
+        "tags": ["for"],
+        "difficulty": "beginner",
+        "video": "https://www.youtube.com/watch?v=0ZvaDa8eT5s"
+      },
+      {
+        "question": "Write a for loop that prints each item in the list [1, 2, 3]:",
+        "type": "code_writing",
+        "tags": ["for"],
+        "difficulty": "beginner",
+        "video": "https://www.youtube.com/watch?v=0ZvaDa8eT5s"
+      },
+      {
+        "question": "What keyword is used to create a while loop in Python?",
+        "type": "multiple_choice",
+        "options": ["while", "loop", "when", "until"],
+        "answer": "while",
+        "tags": ["while"],
+        "difficulty": "beginner",
+        "video": "https://www.youtube.com/watch?v=6iF8Xb7Z3wQ"
+      },
+      {
+        "question": "What is the correct syntax for a while loop?",
+        "type": "multiple_choice",
+        "options": [
+          "while condition:",
+          "while (condition) {",
+          "while condition do:",
+          "while: condition"
+        ],
+        "answer": "while condition:",
+        "tags": ["while"],
+        "difficulty": "beginner",
+        "video": "https://www.youtube.com/watch?v=6iF8Xb7Z3wQ"
+      },
+      {
+        "question": "What will this code print?\n[code]i = 1[\\n]while i < 4:[\\n][indent]print(i)[\\n][indent]i += 1[/code]",
+        "type": "multiple_choice",
+        "options": ["1 2 3", "1 2 3 4", "0 1 2 3", "Error"],
+        "answer": "1 2 3",
+        "tags": ["while"],
+        "difficulty": "beginner",
+        "video": "https://www.youtube.com/watch?v=6iF8Xb7Z3wQ"
+      },
+      {
+        "question": "What happens if you forget to update the variable in a while loop?",
+        "type": "multiple_choice",
+        "options": [
+          "The loop runs forever",
+          "The loop stops immediately",
+          "Python gives an error",
+          "The loop runs once"
+        ],
+        "answer": "The loop runs forever",
+        "tags": ["while"],
+        "difficulty": "beginner",
+        "video": "https://www.youtube.com/watch?v=6iF8Xb7Z3wQ"
+      },
+      {
+        "question": "What do you need to remember to do in a while loop to avoid infinite loops?",
+        "type": "multiple_choice",
+        "options": [
+          "Update the loop variable",
+          "Use a for loop instead",
+          "Add a break statement",
+          "Use parentheses"
+        ],
+        "answer": "Update the loop variable",
+        "tags": ["while"],
+        "difficulty": "beginner",
+        "video": "https://www.youtube.com/watch?v=6iF8Xb7Z3wQ"
+      },
+      {
+        "question": "Write a while loop that prints numbers from 1 to 3:",
+        "type": "code_writing",
+        "tags": ["while"],
+        "difficulty": "beginner",
+        "video": "https://www.youtube.com/watch?v=6iF8Xb7Z3wQ"
+      },
+      {
+        "question": "Write a while loop that counts down from 5 to 1:",
+        "type": "code_writing",
+        "tags": ["while"],
+        "difficulty": "beginner",
+        "video": "https://www.youtube.com/watch?v=6iF8Xb7Z3wQ"
+      },
+      {
+        "question": "What does the break statement do in a loop?",
+        "type": "multiple_choice",
+        "options": [
+          "Stops the loop completely",
+          "Skips one iteration",
+          "Restarts the loop",
+          "Pauses the loop"
+        ],
+        "answer": "Stops the loop completely",
+        "tags": ["break"],
+        "difficulty": "beginner",
+        "video": "https://www.youtube.com/watch?v=6iF8Xb7Z3wQ"
+      },
+      {
+        "question": "What will this code print?\n[code]for x in [1, 2, 3, 4]:[\\n][indent]if x == 3:[\\n][indent][indent]break[\\n][indent]print(x)[/code]",
+        "type": "multiple_choice",
+        "options": ["1 2", "1 2 3", "1 2 3 4", "3 4"],
+        "answer": "1 2",
+        "tags": ["break"],
+        "difficulty": "beginner",
+        "video": "https://www.youtube.com/watch?v=0ZvaDa8eT5s"
+      },
+      {
+        "question": "Where can you use the break statement?",
+        "type": "multiple_choice",
+        "options": [
+          "Inside loops only",
+          "Anywhere in Python",
+          "Only in functions",
+          "Only with if statements"
+        ],
+        "answer": "Inside loops only",
+        "tags": ["break"],
+        "difficulty": "beginner",
+        "video": "https://www.youtube.com/watch?v=6iF8Xb7Z3wQ"
+      },
+      {
+        "question": "What happens when break is used in a nested loop?",
+        "type": "multiple_choice",
+        "options": [
+          "Only exits the innermost loop",
+          "Exits all loops",
+          "Causes an error",
+          "Does nothing"
+        ],
+        "answer": "Only exits the innermost loop",
+        "tags": ["break"],
+        "difficulty": "beginner",
+        "video": "https://www.youtube.com/watch?v=6iF8Xb7Z3wQ"
+      },
+      {
+        "question": "Write a for loop that prints 1, 2 then stops when it reaches 3:",
+        "type": "code_writing",
+        "tags": ["break"],
+        "difficulty": "beginner",
+        "video": "https://www.youtube.com/watch?v=6iF8Xb7Z3wQ"
+      },
+      {
+        "question": "Write a while loop that stops when a variable reaches 5:",
+        "type": "code_writing",
+        "tags": ["break"],
+        "difficulty": "beginner",
+        "video": "https://www.youtube.com/watch?v=6iF8Xb7Z3wQ"
+      },
+      {
+        "question": "What does the continue statement do in a loop?",
+        "type": "multiple_choice",
+        "options": [
+          "Skips the rest of the current iteration",
+          "Stops the loop completely",
+          "Restarts the loop from the beginning",
+          "Repeats the current iteration"
+        ],
+        "answer": "Skips the rest of the current iteration",
+        "tags": ["continue"],
+        "difficulty": "beginner",
+        "video": "https://www.youtube.com/watch?v=6iF8Xb7Z3wQ"
+      },
+      {
+        "question": "What will this code print?\n[code]for x in [1, 2, 3, 4]:[\\n][indent]if x == 2:[\\n][indent][indent]continue[\\n][indent]print(x)[/code]",
+        "type": "multiple_choice",
+        "options": ["1 3 4", "1 2 3 4", "2", "1 2"],
+        "answer": "1 3 4",
+        "tags": ["continue"],
+        "difficulty": "beginner",
+        "video": "https://www.youtube.com/watch?v=0ZvaDa8eT5s"
+      },
+      {
+        "question": "After a continue statement, what happens next?",
+        "type": "multiple_choice",
+        "options": [
+          "Loop moves to next iteration",
+          "Loop stops completely",
+          "Loop restarts from beginning",
+          "Program ends"
+        ],
+        "answer": "Loop moves to next iteration",
+        "tags": ["continue"],
+        "difficulty": "beginner",
+        "video": "https://www.youtube.com/watch?v=6iF8Xb7Z3wQ"
+      },
+      {
+        "question": "Can you use continue in both for and while loops?",
+        "type": "multiple_choice",
+        "options": ["Yes", "No", "Only in for loops", "Only in while loops"],
+        "answer": "Yes",
+        "tags": ["continue"],
+        "difficulty": "beginner",
+        "video": "https://www.youtube.com/watch?v=6iF8Xb7Z3wQ"
+      },
+      {
+        "question": "Write a for loop that prints numbers 1-5 but skips 3:",
+        "type": "code_writing",
+        "tags": ["continue"],
+        "difficulty": "beginner",
+        "video": "https://www.youtube.com/watch?v=6iF8Xb7Z3wQ"
+      },
+      {
+        "question": "Write a loop that prints only even numbers from 1 to 6:",
+        "type": "code_writing",
+        "tags": ["continue"],
+        "difficulty": "beginner",
+        "video": "https://www.youtube.com/watch?v=6iF8Xb7Z3wQ"
+      },
+      {
+        "question": "What does range(5) create?",
+        "type": "multiple_choice",
+        "options": [
+          "Numbers 0, 1, 2, 3, 4",
+          "Numbers 1, 2, 3, 4, 5",
+          "Numbers 0, 1, 2, 3, 4, 5",
+          "Just the number 5"
+        ],
+        "answer": "Numbers 0, 1, 2, 3, 4",
+        "tags": ["range"],
+        "difficulty": "beginner",
+        "video": "https://www.youtube.com/watch?v=0ZvaDa8eT5s"
+      },
+      {
+        "question": "What will this code print?\n[code]for x in range(3):[\\n][indent]print(x)[/code]",
+        "type": "multiple_choice",
+        "options": ["0 1 2", "1 2 3", "0 1 2 3", "3"],
+        "answer": "0 1 2",
+        "tags": ["range"],
+        "difficulty": "beginner",
+        "video": "https://www.youtube.com/watch?v=0ZvaDa8eT5s"
+      },
+      {
+        "question": "How do you create a range from 2 to 5 (not including 5)?",
+        "type": "multiple_choice",
+        "options": ["range(2, 5)", "range(2, 6)", "range(5, 2)", "range(2-5)"],
+        "answer": "range(2, 5)",
+        "tags": ["range"],
+        "difficulty": "beginner",
+        "video": "https://www.youtube.com/watch?v=0ZvaDa8eT5s"
+      },
+      {
+        "question": "What does range(1, 6, 2) create?",
+        "type": "multiple_choice",
+        "options": ["1, 3, 5", "1, 2, 3, 4, 5, 6", "2, 4, 6", "1, 6, 2"],
+        "answer": "1, 3, 5",
+        "tags": ["range"],
+        "difficulty": "beginner",
+        "video": "https://www.youtube.com/watch?v=0ZvaDa8eT5s"
+      },
+      {
+        "question": "How many numbers does range(10) contain?",
+        "type": "multiple_choice",
+        "options": ["10", "11", "9", "0"],
+        "answer": "10",
+        "tags": ["range"],
+        "difficulty": "beginner",
+        "video": "https://www.youtube.com/watch?v=0ZvaDa8eT5s"
+      },
+      {
+        "question": "Write a for loop using range() that prints numbers 0 to 4:",
+        "type": "code_writing",
+        "tags": ["range"],
+        "difficulty": "beginner",
+        "video": "https://www.youtube.com/watch?v=0ZvaDa8eT5s"
+      },
+      {
+        "question": "Write a for loop that prints numbers 1 to 3 using range():",
+        "type": "code_writing",
+        "tags": ["range"],
+        "difficulty": "beginner",
+        "video": "https://www.youtube.com/watch?v=0ZvaDa8eT5s"
+      },
+      {
+        "question": "When does the else block in a loop execute?",
+        "type": "multiple_choice",
+        "options": [
+          "When the loop completes normally",
+          "When the loop is broken",
+          "Before the loop starts",
+          "During each iteration"
+        ],
+        "answer": "When the loop completes normally",
+        "tags": ["else"],
+        "difficulty": "beginner",
+        "video": "https://www.youtube.com/watch?v=0ZvaDa8eT5s"
+      },
+      {
+        "question": "Does the else block run if a loop is stopped with break?",
+        "type": "multiple_choice",
+        "options": ["No", "Yes", "Sometimes", "Only in for loops"],
+        "answer": "No",
+        "tags": ["else"],
+        "difficulty": "beginner",
+        "video": "https://www.youtube.com/watch?v=0ZvaDa8eT5s"
+      },
+      {
+        "question": "What will this code print?\n[code]for x in range(2):[\\n][indent]print(x)[\\n]else:[\\n][indent]print(\"Done\")[/code]",
+        "type": "multiple_choice",
+        "options": ["0 1 Done", "0 1", "Done", "Error"],
+        "answer": "0 1 Done",
+        "tags": ["else"],
+        "difficulty": "beginner",
+        "video": "https://www.youtube.com/watch?v=0ZvaDa8eT5s"
+      },
+      {
+        "question": "Can you use else with both for and while loops?",
+        "type": "multiple_choice",
+        "options": ["Yes", "No", "Only with for", "Only with while"],
+        "answer": "Yes",
+        "tags": ["else"],
+        "difficulty": "beginner",
+        "video": "https://www.youtube.com/watch?v=6iF8Xb7Z3wQ"
+      },
+      {
+        "question": "Write a for loop with an else that prints 'Finished' when done:",
+        "type": "code_writing",
+        "tags": ["else"],
+        "difficulty": "beginner",
+        "video": "https://www.youtube.com/watch?v=0ZvaDa8eT5s"
+      },
+      {
+        "question": "What is the pass statement used for?",
+        "type": "multiple_choice",
+        "options": [
+          "To create empty loops without errors",
+          "To stop a loop",
+          "To skip an iteration",
+          "To restart a loop"
+        ],
+        "answer": "To create empty loops without errors",
+        "tags": ["pass"],
+        "difficulty": "beginner",
+        "video": "https://www.youtube.com/watch?v=0ZvaDa8eT5s"
+      },
+      {
+        "question": "What happens when Python encounters a pass statement?",
+        "type": "multiple_choice",
+        "options": [
+          "Nothing, it does nothing",
+          "The loop stops",
+          "The loop restarts",
+          "An error occurs"
+        ],
+        "answer": "Nothing, it does nothing",
+        "tags": ["pass"],
+        "difficulty": "beginner",
+        "video": "https://www.youtube.com/watch?v=0ZvaDa8eT5s"
+      },
+      {
+        "question": "Why would you use pass in a for loop?",
+        "type": "multiple_choice",
+        "options": [
+          "To avoid syntax errors in empty loops",
+          "To make the loop run faster",
+          "To add comments",
+          "To print something"
+        ],
+        "answer": "To avoid syntax errors in empty loops",
+        "tags": ["pass"],
+        "difficulty": "beginner",
+        "video": "https://www.youtube.com/watch?v=0ZvaDa8eT5s"
+      },
+      {
+        "question": "Is this code valid?\n[code]for x in range(3):[\\n][indent]pass[/code]",
+        "type": "multiple_choice",
+        "options": ["Yes", "No", "Only in Python 3", "Only with while loops"],
+        "answer": "Yes",
+        "tags": ["pass"],
+        "difficulty": "beginner",
+        "video": "https://www.youtube.com/watch?v=0ZvaDa8eT5s"
+      },
+      {
+        "question": "Write an empty for loop using pass that iterates 3 times:",
+        "type": "code_writing",
+        "tags": ["pass"],
+        "difficulty": "beginner",
+        "video": "https://www.youtube.com/watch?v=0ZvaDa8eT5s"
+      }
+    ]
+  }

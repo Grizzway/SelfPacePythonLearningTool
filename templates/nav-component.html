@@ -1,0 +1,53 @@
+<!-- Navigation Component -->
+<!-- Menu Toggle Button -->
+<button class="menu-toggle" id="menuToggle">×</button>
+
+<!-- Menu Overlay for mobile -->
+<div class="menu-overlay" id="menuOverlay"></div>
+
+<!-- Side Menu -->
+<nav class="side-menu open" id="sideMenu">
+    <div class="menu-header">
+        <h3>Navigation</h3>
+    </div>
+    <div class="menu-content">
+        <a href="/" class="menu-item">🏠 Back to Home</a>
+        {% if current_topic %}
+            <a href="/quiz/{{ current_topic }}" class="menu-item">📝 Retake Quiz</a>
+        {% endif %}
+        
+        <!-- Tag-specific navigation (only on results page with failing scores) -->
+        <div id="tag-navigation" style="display: none;">
+            <div class="menu-divider"></div>
+            <div class="menu-section-title">Review Topics</div>
+            <!-- Tags will be populated by JavaScript -->
+        </div>
+    </div>
+</nav>
+
+<script>
+// Function to handle tag selection from navigation
+function selectTopicTab(topic) {
+    if (window.incorrectTopics && window.showTab) {
+        const topicIndex = window.incorrectTopics.indexOf(topic);
+        if (topicIndex !== -1) {
+            // Show the video tab for this topic (topicIndex * 2)
+            const quizResultsData = sessionStorage.getItem('quizResults');
+            if (quizResultsData) {
+                const results = JSON.parse(quizResultsData);
+                window.showTab(topicIndex * 2, results.incorrect || []);
+            }
+            
+            // Update active state
+            document.querySelectorAll('.tag-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            const selectedItem = document.querySelector(`[data-topic="${topic}"]`);
+            if (selectedItem) {
+                selectedItem.classList.add('active');
+            }
+        }
+    }
+}
+</script>

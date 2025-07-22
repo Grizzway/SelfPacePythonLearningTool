@@ -1,0 +1,42 @@
+{
+  "tags": {
+    "function_basics": "Function basics and fundamentals",
+    "function_parameters": "Function parameters and arguments",
+    "return_values": "Function return values",
+    "scope": "Variable scope and namespaces",
+    "lambda": "Lambda functions",
+    "decorators": "Function decorators"
+  },
+  "questions": [
+    {
+      "question": "Python function always returns a value",
+      "type": "multiple_choice",
+      "options": [
+        "False",
+        "True"
+      ],
+      "answer": "False",
+      "tags": [
+        "function_basics"
+      ],
+      "difficulty": "beginner",
+      "video": "https://www.youtube.com/watch?v=NSbOtYzIQI0"
+    },
+    {
+      "question": "Choose the correct function declaration of fun1() so we can execute fun1(25, 75, 55) and fun1(10, 20)",
+      "type": "multiple_choice",
+      "options": [
+        "def fun1(**kwargs)",
+        "No, it is not possible in Python",
+        "def fun1(args*)",
+        "def fun1(*data)"
+      ],
+      "answer": "def fun1(*data)",
+      "tags": [
+        "function_parameters"
+      ],
+      "difficulty": "beginner",
+      "video": "https://www.youtube.com/watch?v=0oTh1CXRaQ0"
+    }
+  ]
+}
