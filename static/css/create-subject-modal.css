@@ -1,0 +1,308 @@
+/* Create Subject Modal Styles */
+.create-subject-modal {
+    width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.create-subject-modal .modal-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-bottom: none;
+}
+
+.create-subject-modal .modal-header h3 {
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.create-subject-modal .modal-close {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.create-subject-modal .modal-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+/* Form Sections */
+.create-subject-modal .form-section {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    background: #f8f9fa;
+}
+
+.create-subject-modal .form-section h4 {
+    margin: 0 0 1.5rem 0;
+    color: #495057;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.create-subject-modal .form-section:nth-child(1) {
+    background: #fff3cd;
+    border-color: #ffeaa7;
+}
+
+.create-subject-modal .form-section:nth-child(2) {
+    background: #d1ecf1;
+    border-color: #bee5eb;
+}
+
+.create-subject-modal .form-section:nth-child(3) {
+    background: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.create-subject-modal .preview-section {
+    background: #e2e3e5;
+    border-color: #d6d8db;
+}
+
+/* Form Groups */
+.create-subject-modal .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.create-subject-modal .form-group:last-child {
+    margin-bottom: 0;
+}
+
+.create-subject-modal .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.create-subject-modal .form-group input,
+.create-subject-modal .form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.create-subject-modal .form-group input:focus,
+.create-subject-modal .form-group textarea:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.create-subject-modal .form-group small {
+    display: block;
+    margin-top: 0.5rem;
+    color: #6c757d;
+    font-size: 0.8rem;
+}
+
+/* Form Row */
+.create-subject-modal .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+/* Icon Selector */
+.create-subject-modal .icon-selector {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.create-subject-modal .icon-selector input {
+    flex: 1;
+}
+
+.create-subject-modal .icon-preview {
+    width: 50px;
+    height: 50px;
+    background: white;
+    border: 2px solid #dee2e6;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: #4299e1;
+    flex-shrink: 0;
+}
+
+.create-subject-modal .icon-suggestions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.create-subject-modal .icon-suggestion-btn {
+    padding: 0.5rem;
+    border: 2px solid #dee2e6;
+    background: white;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.8rem;
+    color: #6c757d;
+}
+
+.create-subject-modal .icon-suggestion-btn:hover,
+.create-subject-modal .icon-suggestion-btn.selected {
+    border-color: #007bff;
+    background: #e3f2fd;
+    color: #007bff;
+}
+
+.create-subject-modal .icon-suggestion-btn i {
+    font-size: 1.2rem;
+}
+
+/* Color Selector */
+.create-subject-modal .color-selector {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.create-subject-modal .color-selector input {
+    width: 60px;
+    height: 50px;
+    padding: 0;
+    border: 2px solid #dee2e6;
+    border-radius: 6px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.create-subject-modal .color-preview {
+    width: 100px;
+    height: 50px;
+    border: 2px solid #dee2e6;
+    border-radius: 6px;
+    background: #4299e1;
+    flex-shrink: 0;
+}
+
+/* Preview Section */
+.create-subject-modal .subject-card-preview {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+}
+
+.create-subject-modal .subject-icon-preview i {
+    font-size: 2.5rem;
+    color: #4299e1;
+}
+
+.create-subject-modal .subject-content-preview {
+    flex: 1;
+}
+
+.create-subject-modal .subject-content-preview h5 {
+    margin: 0 0 0.5rem 0;
+    color: #2c3e50;
+    font-size: 1.2rem;
+}
+
+.create-subject-modal .subject-content-preview p {
+    margin: 0 0 0.75rem 0;
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+.create-subject-modal .subject-stats-preview {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.8rem;
+    color: #007bff;
+}
+
+.create-subject-modal .subject-stats-preview span {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+/* Loading State */
+.create-subject-modal.loading {
+    pointer-events: none;
+}
+
+.create-subject-modal.loading .modal-body {
+    opacity: 0.6;
+}
+
+.create-subject-modal .loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.create-subject-modal .loading-content {
+    text-align: center;
+    color: #007bff;
+}
+
+.create-subject-modal .loading-content i {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .create-subject-modal {
+        width: 95vw;
+        max-width: none;
+    }
+    
+    .create-subject-modal .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .create-subject-modal .icon-suggestions {
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    }
+    
+    .create-subject-modal .subject-card-preview {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .create-subject-modal .subject-stats-preview {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}

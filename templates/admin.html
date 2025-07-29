@@ -3,77 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Admin Panel - Python Fundamentals</title>
+    <title>Admin Dashboard - Learning Platform</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/admin-modals.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/admin-edit-modal.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/create-subject-modal.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin-dashboard.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body>
-    <header class="admin-header">
-        <div class="header-content">
-            <h1>Quiz Admin Panel</h1>
-            <div class="header-actions">
-                <button class="btn btn-secondary" onclick="window.location.href='/'">
-                    ← Back to Home
-                </button>
-            </div>
-        </div>
-    </header>
-
-    <main class="admin-container">
-        <!-- Quiz Selection Section -->
-        <section class="quiz-selection" id="quizSelection">
-            <div class="selection-header">
-                <h2>Select Quiz to Modify</h2>
-                <p>Choose a quiz from the list below to modify its questions</p>
+<body class="admin-body">
+    <div class="admin-layout">
+        <!-- Admin Sidebar -->
+        <nav class="admin-sidebar">
+            <div class="admin-logo">
+                <h2><i class="fas fa-cog"></i> Admin Panel</h2>
+                <a href="/" class="back-to-site">← Back to Site</a>
             </div>
             
-            <div class="quiz-list" id="quizList">
-                <!-- Quiz options will be populated by JavaScript -->
-                <div class="loading-spinner">Loading quizzes...</div>
-            </div>
-        </section>
+            <ul class="admin-nav">
+                <li><a href="/admin" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="#" id="quizEditorNav"><i class="fas fa-edit"></i> Quiz Editor</a></li>
+                <li><a href="#" id="videosNav"><i class="fas fa-video"></i> Videos</a></li>
+                <li><a href="#" id="exportNav"><i class="fas fa-download"></i> Export/Import</a></li>
+            </ul>
+        </nav>
 
-        <!-- Quiz Editor Section -->
-        <section class="quiz-editor" id="quizEditor" style="display: none;">
-            <div class="editor-header">
-                <div class="editor-title">
-                    <h2 id="currentQuizTitle">Editing Quiz</h2>
-                    <button class="btn btn-secondary btn-sm" id="backToSelection">
-                        ← Back to Quiz Selection
-                    </button>
-                </div>
-                
-                <div class="editor-actions">
-                    <button class="btn btn-primary" id="addQuestionBtn">
-                        + Add Question
-                    </button>
-                </div>
-            </div>
+        <!-- Main Content -->
+        <main class="admin-content">
+            <!-- Dashboard View -->
+            <section id="dashboardView" class="admin-view active">
+                <header class="admin-header">
+                    <h1>Dashboard Overview</h1>
+                    <p>Manage your learning platform content</p>
+                </header>
 
-            <div class="questions-container">
-                <div class="questions-list" id="questionsList">
-                    <!-- Questions will be populated by JavaScript -->
-                </div>
-                
-                <div class="editor-footer">
-                    <div class="footer-actions">
-                        <button class="btn btn-warning" id="revertChangesBtn">
-                            ↺ Revert Changes
-                        </button>
-                        <button class="btn btn-success" id="saveQuizBtn">
-                            💾 Save Quiz
-                        </button>
+                <!-- Stats Grid -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="totalSubjects">0</h3>
+                            <p>Subjects</p>
+                        </div>
                     </div>
-                    <div class="changes-indicator" id="changesIndicator">
-                        <span class="changes-count">0 unsaved changes</span>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="totalSubtopics">0</h3>
+                            <p>Subtopics</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="totalLessons">0</h3>
+                            <p>Lessons</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-question-circle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="totalQuestions">0</h3>
+                            <p>Questions</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
-    </main>
 
-    <!-- Modals -->
+                <!-- Quick Actions -->
+                <div class="admin-sections">
+                    <section class="admin-section">
+                        <h2>Quick Actions</h2>
+                        <div class="quick-actions">
+                            <button class="action-btn primary" id="createSubjectBtn">
+                                <i class="fas fa-plus"></i>
+                                Create New Subject
+                            </button>
+                            <button class="action-btn secondary" id="manageLessonsBtn">
+                                <i class="fas fa-edit"></i>
+                                Manage Lessons
+                            </button>
+                            <button class="action-btn secondary" id="addQuestionsBtn">
+                                <i class="fas fa-plus-circle"></i>
+                                Add Questions
+                            </button>
+                            <button class="action-btn tertiary" id="exportDataBtn">
+                                <i class="fas fa-download"></i>
+                                Export Data
+                            </button>
+                        </div>
+                    </section>
+
+                    <!-- Subjects Overview -->
+                    <section class="admin-section">
+                        <h2>Subjects Overview</h2>
+                        <div class="subjects-list" id="subjectsList">
+                            <div class="loading-spinner">Loading subjects...</div>
+                        </div>
+                    </section>
+                </div>
+            </section>
+
+            <!-- Quiz Editor View (Original Quiz Editor) -->
+            <section id="quizEditorView" class="admin-view">
+                <header class="admin-header">
+                    <h1>Quiz Editor</h1>
+                    <p>Edit existing quiz questions and content</p>
+                </header>
+
+                <!-- Quiz Selection Section -->
+                <div class="quiz-selection" id="quizSelection">
+                    <div class="selection-header">
+                        <h2>Select Quiz to Modify</h2>
+                        <p>Choose a quiz from the list below to modify its questions</p>
+                    </div>
+                    
+                    <div class="quiz-list" id="quizList">
+                        <div class="loading-spinner">Loading quizzes...</div>
+                    </div>
+                </div>
+
+                <!-- Quiz Editor Section -->
+                <div class="quiz-editor" id="quizEditor" style="display: none;">
+                    <div class="editor-header">
+                        <div class="editor-title">
+                            <h2 id="currentQuizTitle">Editing Quiz</h2>
+                            <button class="btn btn-secondary btn-sm" id="backToSelection">
+                                ← Back to Quiz Selection
+                            </button>
+                        </div>
+                        
+                        <div class="editor-actions">
+                            <button class="btn btn-primary" id="addQuestionBtn">
+                                + Add Question
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="questions-container">
+                        <div class="questions-list" id="questionsList">
+                            <!-- Questions will be populated by JavaScript -->
+                        </div>
+                        
+                        <div class="editor-footer">
+                            <div class="footer-actions">
+                                <button class="btn btn-warning" id="revertChangesBtn">
+                                    ↺ Revert Changes
+                                </button>
+                                <button class="btn btn-success" id="saveQuizBtn">
+                                    💾 Save Quiz
+                                </button>
+                            </div>
+                            <div class="changes-indicator" id="changesIndicator">
+                                <span class="changes-count">0 unsaved changes</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modals for Quiz Editor -->
+    <div id="modalContainer"></div>
+
     <!-- Delete Confirmation Modal -->
     <div class="modal-overlay" id="deleteModal">
         <div class="modal delete-modal">
@@ -275,10 +378,12 @@
         </div>
     </div>
 
-    <!-- JavaScript -->
+    <!-- JavaScript - Load in correct order -->
     <script src="{{ url_for('static', filename='js/admin.js') }}"></script>
     <script src="{{ url_for('static', filename='js/admin-modals.js') }}"></script>
     <script src="{{ url_for('static', filename='js/admin-edit-modal.js') }}"></script>
     <script src="{{ url_for('static', filename='js/admin-quiz-editor.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/create-subject-modal.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/admin-dashboard.js') }}"></script>
 </body>
 </html>

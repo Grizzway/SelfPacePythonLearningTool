@@ -1,0 +1,131 @@
+<!-- Create Subject Modal -->
+<div class="modal-overlay" id="createSubjectModal">
+    <div class="modal create-subject-modal">
+        <div class="modal-header">
+            <h3>
+                <i class="fas fa-plus-circle"></i>
+                Create New Subject
+            </h3>
+            <button class="modal-close" id="closeCreateSubjectModal">×</button>
+        </div>
+        <div class="modal-body">
+            <form id="createSubjectForm">
+                <!-- Basic Information Section -->
+                <div class="form-section">
+                    <h4>📚 Basic Information</h4>
+                    
+                    <div class="form-group">
+                        <label for="subjectName">Subject Name *</label>
+                        <input type="text" id="subjectName" name="name" required 
+                               placeholder="e.g., Python Programming, JavaScript, Data Structures">
+                        <small>This will be displayed to students</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subjectId">Subject ID *</label>
+                        <input type="text" id="subjectId" name="id" required 
+                               placeholder="e.g., python, javascript, data-structures" readonly>
+                        <small>Auto-generated from subject name (will create {id}Quiz.json)</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subjectDescription">Description *</label>
+                        <textarea id="subjectDescription" name="description" rows="3" required 
+                                  placeholder="Describe what students will learn in this subject..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Visual Settings Section -->
+                <div class="form-section">
+                    <h4>🎨 Visual Settings</h4>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="subjectIcon">Icon *</label>
+                            <div class="icon-selector">
+                                <input type="text" id="subjectIcon" name="icon" value="fas fa-book" required>
+                                <div class="icon-preview">
+                                    <i id="iconPreview" class="fas fa-book"></i>
+                                </div>
+                            </div>
+                            <small>Font Awesome icon class (e.g., fas fa-book, fab fa-python)</small>
+                            
+                            <div class="icon-suggestions">
+                                <button type="button" class="icon-suggestion-btn" data-icon="fas fa-book">
+                                    <i class="fas fa-book"></i> Book
+                                </button>
+                                <button type="button" class="icon-suggestion-btn" data-icon="fab fa-python">
+                                    <i class="fab fa-python"></i> Python
+                                </button>
+                                <button type="button" class="icon-suggestion-btn" data-icon="fab fa-js-square">
+                                    <i class="fab fa-js-square"></i> JavaScript
+                                </button>
+                                <button type="button" class="icon-suggestion-btn" data-icon="fas fa-database">
+                                    <i class="fas fa-database"></i> Database
+                                </button>
+                                <button type="button" class="icon-suggestion-btn" data-icon="fas fa-calculator">
+                                    <i class="fas fa-calculator"></i> Math
+                                </button>
+                                <button type="button" class="icon-suggestion-btn" data-icon="fas fa-flask">
+                                    <i class="fas fa-flask"></i> Science
+                                </button>
+                                <button type="button" class="icon-suggestion-btn" data-icon="fas fa-globe">
+                                    <i class="fas fa-globe"></i> Geography
+                                </button>
+                                <button type="button" class="icon-suggestion-btn" data-icon="fas fa-landmark">
+                                    <i class="fas fa-landmark"></i> History
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subjectColor">Theme Color *</label>
+                            <div class="color-selector">
+                                <input type="color" id="subjectColor" name="color" value="#4299e1" required>
+                                <div class="color-preview" id="colorPreview"></div>
+                            </div>
+                            <small>Primary color for this subject's branding</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Initial Content Section -->
+                <div class="form-section">
+                    <h4>📝 Initial Content</h4>
+                    
+                    <div class="form-group">
+                        <label for="initialTags">Initial Tags (optional)</label>
+                        <textarea id="initialTags" name="tags" rows="2" 
+                                  placeholder="e.g., basics, variables, functions, loops (comma-separated)"></textarea>
+                        <small>These will be the initial question categories for this subject</small>
+                    </div>
+                </div>
+
+                <!-- Preview Section -->
+                <div class="form-section preview-section">
+                    <h4>👀 Preview</h4>
+                    <div class="subject-card-preview">
+                        <div class="subject-icon-preview">
+                            <i id="previewIcon" class="fas fa-book"></i>
+                        </div>
+                        <div class="subject-content-preview">
+                            <h5 id="previewName">Subject Name</h5>
+                            <p id="previewDescription">Subject description will appear here...</p>
+                            <div class="subject-stats-preview">
+                                <span><i class="fas fa-book"></i> 0 Questions</span>
+                                <span><i class="fas fa-tags"></i> <span id="previewTagCount">0</span> Categories</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" id="cancelCreateSubject">Cancel</button>
+            <button type="button" class="btn btn-success" id="confirmCreateSubject">
+                <i class="fas fa-plus"></i>
+                Create Subject
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,9 +1,12 @@
-from flask import Flask, render_template, jsonify, request, session, send_from_directory
+from flask import Flask, render_template, jsonify, request, session, send_from_directory, send_file
 import os
 import json
 import openai
 from dotenv import load_dotenv
 import random
+from datetime import datetime
+import zipfile
+import io
 
 load_dotenv()
 
@@ -197,6 +200,131 @@ def save_quiz_admin(topic):
     except Exception as e:
         print(f"Error saving quiz {topic}: {e}")
         return jsonify({'error': f'Error saving quiz: {str(e)}'}), 500
+
+@app.route('/api/admin/create-subject', methods=['POST'])
+def create_subject():
+    """Create a new subject and its corresponding quiz JSON file"""
+    try:
+        data = request.get_json()
+        
+        # Extract data from request
+        subject_id = data.get('subjectId')
+        subject_name = data.get('subjectName')
+        description = data.get('description')
+        icon = data.get('icon')
+        color = data.get('color')
+        quiz_data = data.get('quizData')
+        
+        print(f"DEBUG: Creating subject with ID: {subject_id}")
+        print(f"DEBUG: Subject name: {subject_name}")
+        print(f"DEBUG: Quiz data: {quiz_data}")
+        
+        # Validate required fields
+        if not subject_id or not subject_name or not quiz_data:
+            return jsonify({'error': 'Missing required fields: subjectId, subjectName, or quizData'}), 400
+        
+        # Create the quiz filename
+        quiz_filename = f"{subject_id}Quiz.json"
+        quiz_filepath = os.path.join('quizzes', quiz_filename)
+        
+        print(f"DEBUG: Quiz file path: {quiz_filepath}")
+        
+        # Check if file already exists
+        if os.path.exists(quiz_filepath):
+            return jsonify({'error': f'Subject with ID "{subject_id}" already exists'}), 409
+        
+        # Ensure quizzes directory exists
+        quiz_dir = os.path.dirname(quiz_filepath)
+        if quiz_dir:
+            os.makedirs(quiz_dir, exist_ok=True)
+        
+        # Create the quiz JSON structure following the functionsQuiz.json format
+        quiz_structure = {
+            "tags": quiz_data.get('tags', {}),
+            "questions": []
+        }
+        
+        print(f"DEBUG: Writing quiz structure: {quiz_structure}")
+        
+        # Write the quiz file
+        with open(quiz_filepath, 'w', encoding='utf-8') as f:
+            json.dump(quiz_structure, f, indent=2, ensure_ascii=False)
+        
+        print(f"DEBUG: Successfully created quiz file: {quiz_filepath}")
+        
+        return jsonify({
+            'success': True,
+            'message': f'Subject "{subject_name}" created successfully',
+            'filename': quiz_filename,
+            'subjectId': subject_id,
+            'filePath': quiz_filepath
+        })
+        
+    except Exception as e:
+        print(f"ERROR: Failed to create subject: {str(e)}")
+        import traceback
+        traceback.print_exc()
+        return jsonify({'error': f'Failed to create subject: {str(e)}'}), 500
+
+
+@app.route('/api/admin/delete-subject/<subject_id>', methods=['DELETE'])
+def delete_subject(subject_id):
+    """Delete a subject and its corresponding quiz JSON file"""
+    try:
+        quiz_filename = f"{subject_id}Quiz.json"
+        quiz_filepath = os.path.join('quizzes', quiz_filename)
+        
+        print(f"DEBUG: Attempting to delete: {quiz_filepath}")
+        
+        if not os.path.exists(quiz_filepath):
+            return jsonify({'error': f'Subject "{subject_id}" not found'}), 404
+        
+        # Delete the quiz file
+        os.remove(quiz_filepath)
+        
+        print(f"DEBUG: Successfully deleted quiz file: {quiz_filepath}")
+        
+        return jsonify({
+            'success': True,
+            'message': f'Subject "{subject_id}" deleted successfully'
+        })
+        
+    except Exception as e:
+        print(f"ERROR: Failed to delete subject: {str(e)}")
+        import traceback
+        traceback.print_exc()
+        return jsonify({'error': f'Failed to delete subject: {str(e)}'}), 500
+
+
+@app.route('/api/admin/export-data')
+def export_data():
+    """Export all quiz data as a downloadable archive"""
+    try:
+        # Create a BytesIO object to hold the zip file
+        zip_buffer = io.BytesIO()
+        
+        # Create the zip file
+        with zipfile.ZipFile(zip_buffer, 'w', zipfile.ZIP_DEFLATED) as zip_file:
+            # Add all quiz JSON files
+            quiz_dir = 'quizzes'
+            if os.path.exists(quiz_dir):
+                for filename in os.listdir(quiz_dir):
+                    if filename.endswith('.json'):
+                        file_path = os.path.join(quiz_dir, filename)
+                        zip_file.write(file_path, filename)
+        
+        zip_buffer.seek(0)
+        
+        return send_file(
+            io.BytesIO(zip_buffer.read()),
+            mimetype='application/zip',
+            as_attachment=True,
+            download_name=f'learning-platform-export-{datetime.now().strftime("%Y-%m-%d")}.zip'
+        )
+        
+    except Exception as e:
+        print(f"ERROR: Failed to export data: {str(e)}")
+        return jsonify({'error': f'Failed to export data: {str(e)}'}), 500
 
 @app.route("/quiz/<topic>")
 def show_quiz(topic):
@@ -510,6 +638,32 @@ def show_results():
     return render_template("results.html",
                          currentTopic=base_topic,
                          incorrectTags=incorrect_tags)
+
+@app.route('/api/admin/test', methods=['GET', 'POST'])
+def test_admin_endpoint():
+    """Test endpoint to verify admin API is working"""
+    try:
+        if request.method == 'GET':
+            return jsonify({
+                'status': 'success',
+                'message': 'Admin API is working',
+                'method': 'GET',
+                'timestamp': datetime.now().isoformat()
+            })
+        else:  # POST
+            data = request.get_json()
+            return jsonify({
+                'status': 'success',
+                'message': 'Admin API POST is working',
+                'received_data': data,
+                'timestamp': datetime.now().isoformat()
+            })
+    except Exception as e:
+        return jsonify({
+            'status': 'error',
+            'message': str(e),
+            'timestamp': datetime.now().isoformat()
+        }), 500
 
 if __name__ == '__main__':
     app.run(debug=True)
